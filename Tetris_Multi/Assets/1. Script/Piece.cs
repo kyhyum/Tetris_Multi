@@ -14,6 +14,7 @@ public class Piece : MonoBehaviour
     private float stepTime;
     private float lockTime;
 
+
     public void Initialize(Board board, Vector3Int position, TetrisData data)
     {
         this.board = board;
@@ -190,5 +191,4 @@ public class Piece : MonoBehaviour
         return valid;
     }
 
-   
 }
