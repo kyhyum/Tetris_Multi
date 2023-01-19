@@ -379,6 +379,7 @@
 "Assets/1. Script/Board.cs"
 "Assets/1. Script/Data.cs"
 "Assets/1. Script/Ghost.cs"
+"Assets/1. Script/NextBlocks.cs"
 "Assets/1. Script/Piece.cs"
 "Assets/1. Script/Popup.cs"
 "Assets/1. Script/Shake.cs"

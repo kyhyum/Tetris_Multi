@@ -1,13 +1,18 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class Board : MonoBehaviour
 {
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
+
     public TetrisData[] tetrises;
+    public NextBlocks[] NextBlocks;
+
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10,20);
-
+    List<int> Blocks = new List<int>();
 
     public RectInt Bounds {
         get {
@@ -27,15 +32,34 @@ public class Board : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void setRandomBlock()
     {
-        SpawnPiece();
+        int random = UnityEngine.Random.Range(0, this.tetrises.Length);
+        Blocks.Add(random);
     }
 
-    public void SpawnPiece()
+    private void Start()
     {
-        int random = Random.Range(0, this.tetrises.Length);
-        TetrisData data = this.tetrises[random];
+        for(int i = 0; i < 5; i++)
+        {
+            setRandomBlock();
+        }
+        BlocksListSet();
+    }
+    public void BlocksListSet()
+    {
+        SpawnPiece(Blocks[0]);
+        Blocks.RemoveAt(0);
+        setRandomBlock();
+        for(int i = 0; i < 5; i++)
+        {
+            NextBlocks[i].set_active(Blocks[i]);
+        }
+    }
+
+    private void SpawnPiece(int blocknum)
+    {
+        TetrisData data = this.tetrises[blocknum];
 
         this.activePiece.Initialize(this,this.spawnPosition, data);
 
@@ -49,7 +73,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         this.tilemap.ClearAllTiles();
     }

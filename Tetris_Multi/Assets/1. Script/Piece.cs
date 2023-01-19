@@ -108,8 +108,9 @@ public class Piece : MonoBehaviour
     {
         this.board.Set(this);
         this.board.ClearLines();
-        this.board.SpawnPiece();
+        this.board.BlocksListSet();
     }
+
     private void ApplyRotationMatrix(int direction)
     {
         for (int i = 0; i < this.cells.Length; i++)
