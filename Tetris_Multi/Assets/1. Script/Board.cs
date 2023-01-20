@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class Board : MonoBehaviour
@@ -10,6 +11,7 @@ public class Board : MonoBehaviour
     public TetrisData[] tetrises;
     public NextBlocks[] NextBlocks;
 
+    public TMP_Text score;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10,20);
     List<int> Blocks = new List<int>();
@@ -127,6 +129,8 @@ public class Board : MonoBehaviour
             if (IsLineFull(row))
             {
                 LineClear(row);
+                Shake.instance.Shaking();
+                score.text = (Int32.Parse(score.text) + 100).ToString("D8");
             }
             else
             {

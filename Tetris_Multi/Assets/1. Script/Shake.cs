@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Shake : MonoBehaviour
 {
-    Vector3 cameraPos;
+    public static Shake instance;
     Vector3 cameraInPos;
     public float shakeRange = 0.05f;
-    public float duration = 0.1f;
     private void Awake()
     {
+        instance = this;
         cameraInPos = this.transform.position;
     }
     public void Shaking()
     {
-        InvokeRepeating("StartShake", 0f, 0.2f);
-        Invoke("StopShake", duration);
+        InvokeRepeating("StartShake", 0f, 0.1f);
+        Invoke("StopShake", 0.1f);
     }
 
     void StartShake()
