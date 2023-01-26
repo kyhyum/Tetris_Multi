@@ -191,5 +191,23 @@ public class Piece : MonoBehaviour
 
         return valid;
     }
+    public void DownDown()
+    {
+        this.board.Clear(this);
+        this.lockTime += Time.deltaTime;
+        Move(Vector2Int.down);
+        this.board.Set(this);
+    }
+
+    public void DownBtnDown()
+    {
+        Invoke("DownDown", 0f);
+        InvokeRepeating("DownDown", 0.5f, 0.1f);
+    }
+
+    public void DownBtnUp()
+    {
+        CancelInvoke("DownDown");
+    }
 
 }

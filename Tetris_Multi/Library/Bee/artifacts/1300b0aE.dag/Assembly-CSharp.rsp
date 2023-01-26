@@ -384,6 +384,7 @@
 "Assets/1. Script/NextBlocks.cs"
 "Assets/1. Script/Piece.cs"
 "Assets/1. Script/Popup.cs"
+"Assets/1. Script/Scene_Change.cs"
 "Assets/1. Script/Shake.cs"
 "Assets/1. Script/Tetris.cs"
 -langversion:9.0
