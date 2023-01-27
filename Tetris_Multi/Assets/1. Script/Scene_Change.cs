@@ -8,6 +8,6 @@ public class Scene_Change : MonoBehaviour
     }
     public void Multi_Game_Scene()
     {
-        SceneManager.LoadScene("Multi_GameScene");
+        SceneManager.LoadScene("Multi_Room");
     }
 }

@@ -118,8 +118,14 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
+-define:PHOTON_UNITY_NETWORKING
+-define:PUN_2_0_OR_NEWER
+-define:PUN_2_OR_NEWER
+-define:PUN_2_19_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll"
+-r:"Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -334,7 +340,17 @@
 -r:"C:/Users/alstn/Documents/GitHub/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.Unsafe.dll"
 -r:"C:/Users/alstn/Documents/GitHub/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
 -r:"C:/Users/alstn/Documents/GitHub/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonChat.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonRealtime.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonUnityNetworking.Demos.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonUnityNetworking.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonUnityNetworking.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonUnityNetworking.Utilities.Culling.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PhotonUnityNetworking.Utilities.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/PsdPlugin.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PunDemos.DemoHubEditor.ref.dll"
+-r:"Library/Bee/artifacts/1300b0aE.dag/PunDemos.DemoSlotcarEditor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.2D.Animation.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.2D.Animation.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/Unity.2D.Common.Editor.ref.dll"
@@ -380,13 +396,29 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/1. Script/Board.cs"
 "Assets/1. Script/Data.cs"
+"Assets/1. Script/GameManager.cs"
 "Assets/1. Script/Ghost.cs"
 "Assets/1. Script/NextBlocks.cs"
 "Assets/1. Script/Piece.cs"
 "Assets/1. Script/Popup.cs"
 "Assets/1. Script/Scene_Change.cs"
+"Assets/1. Script/SeverManager.cs"
 "Assets/1. Script/Shake.cs"
 "Assets/1. Script/Tetris.cs"
+"Assets/Photon/PhotonChat/Demos/Common/EventSystemSpawner.cs"
+"Assets/Photon/PhotonChat/Demos/Common/OnStartDelete.cs"
+"Assets/Photon/PhotonChat/Demos/Common/TextButtonTransition.cs"
+"Assets/Photon/PhotonChat/Demos/Common/TextToggleIsOnTransition.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/AppSettingsExtensions.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/ChannelSelector.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/ChatAppIdCheckerUI.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/ChatGui.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/FriendItem.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/IgnoreUiRaycastWhenInactive.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/NamePickGui.cs"
+"Assets/Photon/PhotonLibs/WebSocket/SocketWebTcp.cs"
+"Assets/Photon/PhotonLibs/WebSocket/WebSocket.cs"
+"Assets/Photon/PhotonRealtime/Demos/DemoLoadBalancing/ConnectAndJoinRandomLb.cs"
 -langversion:9.0
 
 /deterministic

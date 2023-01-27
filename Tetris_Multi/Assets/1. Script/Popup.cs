@@ -1,4 +1,6 @@
+using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Popup : MonoBehaviour
 {
@@ -9,7 +11,8 @@ public class Popup : MonoBehaviour
 
     public void Popup_SetActive()
     {
-        Time.timeScale = 0;
+        if(SceneManager.GetActiveScene().name == "Single_GameScene")
+            Time.timeScale = 0;
         this.gameObject.SetActive(true);
     }
     public void Popup_SetUnActive_time()
