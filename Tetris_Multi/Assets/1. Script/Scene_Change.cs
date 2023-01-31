@@ -10,4 +10,8 @@ public class Scene_Change : MonoBehaviour
     {
         SceneManager.LoadScene("Multi_Room");
     }
+    public void Matching_Scene()
+    {
+        SceneManager.LoadScene("Matching_Menu");
+    }
 }

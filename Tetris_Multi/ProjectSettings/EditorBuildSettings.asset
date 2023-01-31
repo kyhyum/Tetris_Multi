@@ -12,8 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Single_GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Multi_Room.unity
+    path: Assets/Scenes/Matching_Menu.unity
     guid: f6f9f4379cb5e374fb9d9723e4a3024d
+  - enabled: 1
+    path: Assets/Scenes/Multi_Room.unity
+    guid: 767e5a4d825339e4d8c90c081e131bc5
+  - enabled: 1
+    path: Assets/Scenes/In_Room.unity
+    guid: 8e03a9b89ec71374da790199b080ae7e
   - enabled: 1
     path: Assets/Scenes/Multi_GameScene.unity
     guid: 8d1a2bc753745ea44824ef69f9724b1a
