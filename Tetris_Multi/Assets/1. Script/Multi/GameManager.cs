@@ -10,19 +10,19 @@ public class GameManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public override void OnLeftRoom()
     {
-       SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
     }
-    
+
     public void OutRoom()
     {
         PhotonNetwork.LeaveRoom();

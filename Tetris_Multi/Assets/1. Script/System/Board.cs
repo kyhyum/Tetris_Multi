@@ -3,10 +3,12 @@ using Photon.Realtime;
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 public class Board : MonoBehaviour
 {
+    public Tile createtile;
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
 
@@ -172,6 +174,56 @@ public class Board : MonoBehaviour
         return true;
     }
 
+    public void addLine(int num, Piece piece)
+    {
+        int upsize = num + Bounds.yMin;
+        int a = 3 + Bounds.xMin;
+        RectInt bounds = this.Bounds;
+        int b = bounds.yMax;
+        Debug.Log("b : " + b);
+        Debug.Log("num : " + num);
+        while (b >= upsize)
+        {
+            bool ispiece = false;
+            for (int col = bounds.xMin; col < bounds.xMax; col++)
+            {
+                Vector3Int position = new Vector3Int(col, b - num, 0);
+                TileBase below = this.tilemap.GetTile(position);
+                for (int i = 0; i < piece.cells.Length; i++)
+                {
+                    Vector3Int tilePosition = piece.cells[i] + piece.position;
+                    Debug.Log("tilePosition : " + tilePosition + " position : " + position);
+                    if(tilePosition == position)
+                    {
+                        ispiece = true;
+                        break;
+                    }
+                }
+                Debug.Log("x : " + col + "y : " + b);
+                if(ispiece == false)
+                {
+                    position = new Vector3Int(col, b, 0);
+                    this.tilemap.SetTile(position, below);
+                }
+            }
+
+            b--;
+        }
+
+        for (int row = bounds.yMin; row < upsize; row++)
+        {
+            for (int col = bounds.xMin; col < bounds.xMax; col++)
+            {
+                Vector3Int position = new Vector3Int(col, row, 0);
+                this.tilemap.SetTile(position, null);
+                if (col != a)
+                {
+                    this.tilemap.SetTile(position, createtile);
+                }
+            }
+        }
+
+    }
     private void LineClear(int row)
     {
         RectInt bounds = this.Bounds;
