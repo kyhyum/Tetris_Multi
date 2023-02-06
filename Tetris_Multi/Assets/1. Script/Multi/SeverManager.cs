@@ -57,7 +57,7 @@ public class SeverManager : MonoBehaviourPunCallbacks
     //로비 입장 후
     public override void OnJoinedLobby()
     {
-        Debug.Log($"PhotonNetwork.InLobby = {PhotonNetwork.InLobby}");
+        Debug.Log($"PhotonNetwork.InLobby123 = {PhotonNetwork.InLobby}");
     }
 
     //랜덤 입장 실패 시
@@ -101,9 +101,8 @@ public class SeverManager : MonoBehaviourPunCallbacks
     //랜덤 룸 접속
     public void Random_Room_Connect()
     {
-        PhotonNetwork.JoinLobby();
         Debug.Log($"PhotonNetwork.InLobby = {PhotonNetwork.InLobby}");
-        PhotonNetwork.ConnectUsingSettings();
+        
         for (int i = 0; i < Buttons.Length; i++)
         {
             Buttons[i].interactable = false;

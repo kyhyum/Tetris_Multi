@@ -43,4 +43,6 @@ public class SetRoom : MonoBehaviourPunCallbacks
                 player2.text = "none";
         }
     }
+
+
 }

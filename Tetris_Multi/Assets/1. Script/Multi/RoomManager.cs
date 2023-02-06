@@ -4,10 +4,11 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviourPunCallbacks
 {
-
+    public Button btn;
     private string userId;
 
     // 룸 목록 저장하기 위한 딕셔너리 자료형
@@ -22,13 +23,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         // 방장이 혼자 씬을 로딩하면, 나머지 사람들은 자동으로 싱크가 됨
-        PhotonNetwork.AutomaticallySyncScene = true;
+        //PhotonNetwork.AutomaticallySyncScene = true;
         // userid 초기화
         PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
         userId = PhotonNetwork.NickName;
         Debug.Log(userId);
     }
-
     // 룸 생성 콜백 함수
     public override void OnCreatedRoom()
     {
@@ -70,6 +70,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
                 }
             }
         }
+    }
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        RoomOptions ro = new RoomOptions();
+        ro.MaxPlayers = 2;
+        ro.IsOpen = true;
+        ro.IsVisible = true;
+
+        PhotonNetwork.CreateRoom($"{userId}의 방", ro);
     }
 
     // 룸 생성
