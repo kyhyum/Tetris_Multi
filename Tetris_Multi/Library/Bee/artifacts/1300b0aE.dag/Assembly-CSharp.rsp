@@ -409,6 +409,7 @@
 "Assets/1. Script/System/Piece.cs"
 "Assets/1. Script/System/Shake.cs"
 "Assets/1. Script/System/Tetris.cs"
+"Assets/1. Script/System/tile.cs"
 "Assets/Photon/PhotonChat/Demos/Common/EventSystemSpawner.cs"
 "Assets/Photon/PhotonChat/Demos/Common/OnStartDelete.cs"
 "Assets/Photon/PhotonChat/Demos/Common/TextButtonTransition.cs"

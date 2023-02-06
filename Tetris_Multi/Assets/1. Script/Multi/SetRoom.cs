@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetRoom : MonoBehaviourPunCallbacks
 {
-
+    public Button btn_start;
     private RoomInfo _roomInfo;
     public TMP_Text Room_Name_Text;
 
@@ -27,7 +28,9 @@ public class SetRoom : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        
+        btn_start.interactable = false;
+        if (!PhotonNetwork.IsMasterClient)
+            btn_start.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +45,13 @@ public class SetRoom : MonoBehaviourPunCallbacks
             else
                 player2.text = "none";
         }
+        if (PhotonNetwork.PlayerList.Length == 2 && PhotonNetwork.IsMasterClient)
+            btn_start.interactable = true;
     }
 
 
+    public void start_btn()
+    {
+            PhotonNetwork.LoadLevel("Multi_GameScene");
+    }
 }
