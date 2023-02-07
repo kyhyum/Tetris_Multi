@@ -29,8 +29,6 @@ public class SetRoom : MonoBehaviourPunCallbacks
     void Start()
     {
         btn_start.interactable = false;
-        if (!PhotonNetwork.IsMasterClient)
-            btn_start.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
