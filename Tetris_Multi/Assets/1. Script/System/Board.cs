@@ -1,5 +1,4 @@
 using Photon.Pun;
-using Photon.Realtime;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -16,8 +15,6 @@ public class Board : MonoBehaviour
     public NextBlocks[] NextBlocks;
 
     public TMP_Text score;
-    public TMP_Text player1;
-    public TMP_Text player2;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10,20);
     List<int> Blocks = new List<int>();
@@ -42,15 +39,7 @@ public class Board : MonoBehaviour
 
     private void Update()
     {
-        if (PhotonNetwork.IsConnected)
-        {
-            if(PhotonNetwork.PlayerList.Length > 0)
-            player1.text = PhotonNetwork.PlayerList[0].ToString();
-            if (PhotonNetwork.PlayerList.Length == 2)
-                player2.text = PhotonNetwork.PlayerList[1].ToString();
-            else
-                player2.text = "none";
-        }
+       
     }
 
     private void setRandomBlock()
@@ -174,6 +163,7 @@ public class Board : MonoBehaviour
         return true;
     }
 
+    [PunRPC]
     public void addLine(int num, Piece piece)
     {
         int upsize = num + Bounds.yMin;

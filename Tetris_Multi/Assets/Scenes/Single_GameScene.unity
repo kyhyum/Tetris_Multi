@@ -8740,6 +8740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad513441bb0dda499eb30c1b30d7ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createtile: {fileID: 0}
   tetrises:
   - tetris: 0
     tile: {fileID: 11400000, guid: 01513867ea8ffbf4fb435464c95cd80c, type: 2}
@@ -8762,6 +8763,8 @@ MonoBehaviour:
   - {fileID: 2060144841}
   - {fileID: 25734261}
   score: {fileID: 12322898}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   spawnPosition: {x: -1, y: 7, z: 0}
   boardSize: {x: 10, y: 20}
 --- !u!114 &1735178018
