@@ -32,4 +32,13 @@ public class Scene_Change : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("MainMenu");
         PhotonNetwork.Disconnect();
     }
+
+    public void Room_List_Scene()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene("Multi_Room");
+    }
 }

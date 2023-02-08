@@ -29,7 +29,6 @@ public class Popup : MonoBehaviour
 
     public void Popoup_OutToLobby()
     {
-        PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene("Matching_Menu");
+        PhotonNetwork.LoadLevel("In_Room");
     }
 }

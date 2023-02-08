@@ -33,13 +33,4 @@ public class GameManager : MonoBehaviourPunCallbacks
                 player2.text = "none";
         }
     }
-    public override void OnLeftRoom()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void OutRoom()
-    {
-        PhotonNetwork.LeaveRoom();
-    }
 }
