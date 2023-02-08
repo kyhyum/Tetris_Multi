@@ -26,4 +26,10 @@ public class Popup : MonoBehaviour
         Time.timeScale = 0;
         this.gameObject.SetActive(false);
     }
+
+    public void Popoup_OutToLobby()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("Matching_Menu");
+    }
 }

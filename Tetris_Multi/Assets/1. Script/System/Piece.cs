@@ -211,6 +211,5 @@ public class Piece : MonoBehaviour
     }
 
     public void addlines(){
-        this.board.addLine(2,this);
     }
 }

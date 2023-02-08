@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
-public class Board : MonoBehaviour
+public class Board : MonoBehaviourPun
 {
+    public GameObject gameover_popup;
     public Tile createtile;
     public Tilemap tilemap { get; private set; }
     public Piece activePiece { get; private set; }
@@ -14,24 +16,27 @@ public class Board : MonoBehaviour
     public TetrisData[] tetrises;
     public NextBlocks[] NextBlocks;
 
+    public TMP_Text WinOrLose;
     public TMP_Text score;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10,20);
     List<int> Blocks = new List<int>();
 
-    public RectInt Bounds {
-        get {
-            Vector2Int position = new Vector2Int(-this.boardSize.x /2,-this.boardSize.y /2);
+    public RectInt Bounds
+    {
+        get
+        {
+            Vector2Int position = new Vector2Int(-this.boardSize.x / 2, -this.boardSize.y / 2);
             return new RectInt(position, this.boardSize);
-        } 
+        }
     }
 
     private void Awake()
     {
         this.tilemap = GetComponentInChildren<Tilemap>();
-        this.activePiece = GetComponentInChildren <Piece>();
+        this.activePiece = GetComponentInChildren<Piece>();
 
-        for(int i = 0; i < this.tetrises.Length; i++)
+        for (int i = 0; i < this.tetrises.Length; i++)
         {
             this.tetrises[i].Initialize();
         }
@@ -39,7 +44,7 @@ public class Board : MonoBehaviour
 
     private void Update()
     {
-       
+
     }
 
     private void setRandomBlock()
@@ -50,7 +55,7 @@ public class Board : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             setRandomBlock();
         }
@@ -61,7 +66,7 @@ public class Board : MonoBehaviour
         SpawnPiece(Blocks[0]);
         Blocks.RemoveAt(0);
         setRandomBlock();
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             NextBlocks[i].set_active(Blocks[i]);
         }
@@ -71,7 +76,7 @@ public class Board : MonoBehaviour
     {
         TetrisData data = this.tetrises[blocknum];
 
-        this.activePiece.Initialize(this,this.spawnPosition, data);
+        this.activePiece.Initialize(this, this.spawnPosition, data);
 
         if (IsValidPosition(this.activePiece, this.spawnPosition))
         {
@@ -85,8 +90,25 @@ public class Board : MonoBehaviour
 
     public void GameOver()
     {
-        this.tilemap.ClearAllTiles();
+        Time.timeScale = 0f;
+        if (SceneManager.GetActiveScene().name == "Multi_GameScene")
+        {
+            photonView.RPC("GameEnd", RpcTarget.All, PhotonNetwork.NickName);
+        }
+        else
+        {
+
+        }
     }
+
+    [PunRPC]
+    public void GameEnd(string player)
+    {
+        if (player == PhotonNetwork.NickName)
+            WinOrLose.text = "YOU LOSE";
+        gameover_popup.SetActive(true);
+    }
+
     public void Set(Piece piece)
     {
         for (int i = 0; i < piece.cells.Length; i++)
@@ -109,7 +131,7 @@ public class Board : MonoBehaviour
     {
         RectInt bounds = this.Bounds;
 
-        for(int i = 0; i < piece.cells.Length; i++)
+        for (int i = 0; i < piece.cells.Length; i++)
         {
             Vector3Int tilePosition = piece.cells[i] + position;
 
@@ -131,11 +153,12 @@ public class Board : MonoBehaviour
     {
         RectInt bounds = this.Bounds;
         int row = bounds.yMin;
-
+        int clearnums = 0;
         while (row < bounds.yMax)
         {
             if (IsLineFull(row))
             {
+                clearnums++;
                 LineClear(row);
                 Shake.instance.Shaking();
                 score.text = (Int32.Parse(score.text) + 100).ToString("D8");
@@ -144,6 +167,10 @@ public class Board : MonoBehaviour
             {
                 row++;
             }
+        }
+        if (clearnums >= 2)
+        {
+            photonView.RPC("addLine", RpcTarget.Others, clearnums - 1);
         }
     }
 
@@ -164,10 +191,12 @@ public class Board : MonoBehaviour
     }
 
     [PunRPC]
-    public void addLine(int num, Piece piece)
+    public void addLine(int num)
     {
         int upsize = num + Bounds.yMin;
-        int a = 3 + Bounds.xMin;
+
+        int random = UnityEngine.Random.Range(0, 10);
+        int a = random + Bounds.xMin;
         RectInt bounds = this.Bounds;
         int b = bounds.yMax;
         Debug.Log("b : " + b);
@@ -179,18 +208,16 @@ public class Board : MonoBehaviour
             {
                 Vector3Int position = new Vector3Int(col, b - num, 0);
                 TileBase below = this.tilemap.GetTile(position);
-                for (int i = 0; i < piece.cells.Length; i++)
+                for (int i = 0; i < activePiece.cells.Length; i++)
                 {
-                    Vector3Int tilePosition = piece.cells[i] + piece.position;
-                    Debug.Log("tilePosition : " + tilePosition + " position : " + position);
-                    if(tilePosition == position)
+                    Vector3Int tilePosition = activePiece.cells[i] + activePiece.position;
+                    if (tilePosition == position)
                     {
                         ispiece = true;
                         break;
                     }
                 }
-                Debug.Log("x : " + col + "y : " + b);
-                if(ispiece == false)
+                if (ispiece == false)
                 {
                     position = new Vector3Int(col, b, 0);
                     this.tilemap.SetTile(position, below);

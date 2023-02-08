@@ -8,12 +8,15 @@ using TMPro;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    private static GameManager instance = null;
     public TMP_Text player1;
     public TMP_Text player2;
     public static GameManager Instance;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if (null == instance)
+            instance = this;
     }
 
 
