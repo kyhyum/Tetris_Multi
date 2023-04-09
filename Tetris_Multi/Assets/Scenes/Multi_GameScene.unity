@@ -9317,9 +9317,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1568144791}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OutRoom
+      - m_Target: {fileID: 1894357688}
+        m_TargetAssemblyTypeName: Board, Assembly-CSharp
+        m_MethodName: GameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

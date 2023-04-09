@@ -124,10 +124,10 @@
 -define:PUN_2_19_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
--r:"D:/Unity 프로젝트/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
--r:"D:/Unity 프로젝트/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
--r:"D:/Unity 프로젝트/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
--r:"D:/Unity 프로젝트/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
+-r:"D:/Unity Project/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.dll"
+-r:"D:/Unity Project/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Pdb.dll"
+-r:"D:/Unity Project/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.burst@1.6.6/Unity.Burst.CodeGen/Unity.Burst.Cecil.Rocks.dll"
+-r:"D:/Unity Project/Tetris_Multi/Tetris_Multi/Tetris_Multi/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
 -r:"D:/Unity/2021.3.11f1/Editor/Data/Managed/Unity.CompilationPipeline.Common.dll"
 -r:"D:/Unity/2021.3.11f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"D:/Unity/2021.3.11f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"

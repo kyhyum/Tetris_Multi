@@ -93,19 +93,23 @@ public class Board : MonoBehaviourPun
         Time.timeScale = 0f;
         if (SceneManager.GetActiveScene().name == "Multi_GameScene")
         {
-            photonView.RPC("GameEnd", RpcTarget.All, PhotonNetwork.NickName);
+            photonView.RPC("GameEnd", RpcTarget.Others, true);
+            GameEnd(false);
         }
         else
         {
-
+            SceneManager.LoadScene("Single_GameScene");
+            Time.timeScale = 1f;
         }
     }
 
     [PunRPC]
-    public void GameEnd(string player)
+    public void GameEnd(bool iswin)
     {
-        if (player == PhotonNetwork.NickName)
+        if (!iswin)
             WinOrLose.text = "YOU LOSE";
+        else
+            WinOrLose.text = "YOU WIN";
         gameover_popup.SetActive(true);
     }
 
@@ -170,6 +174,7 @@ public class Board : MonoBehaviourPun
         }
         if (clearnums >= 2)
         {
+            Debug.Log("ADD");
             photonView.RPC("addLine", RpcTarget.Others, clearnums - 1);
         }
     }

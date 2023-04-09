@@ -16,6 +16,7 @@ public class tile : MonoBehaviourPun
     public Tilemap tilemap { get; private set; }
     private Tilemap remote_tile;
     public Vector2Int boardSize = new Vector2Int(10, 20);
+    float time = 0;
 
     public RectInt Bounds
     {
@@ -30,11 +31,15 @@ public class tile : MonoBehaviourPun
     {
         this.remote_tile = GetComponentInChildren<Tilemap>();
         tilemap = board.GetComponentInChildren<Tilemap>();
-        InvokeRepeating("hastile", 0f, 0.1f);
-        // this.remote_tilemap.color = Color.black;
     }
     private void Update()
     {
+        time += Time.deltaTime;
+        if(time >= 0.1)
+        {
+            hastile();
+            time = 0;
+        }
     }
 
     public void hastile()
