@@ -172,7 +172,7 @@ public class Board : MonoBehaviourPun
                 row++;
             }
         }
-        if (clearnums >= 2)
+        if (SceneManager.GetActiveScene().name == "Multi_GameScene" && clearnums >= 2)
         {
             Debug.Log("ADD");
             photonView.RPC("addLine", RpcTarget.Others, clearnums - 1);

@@ -18,7 +18,6 @@ public class Scene_Change : MonoBehaviourPunCallbacks
     }
     public void Matching_Scene_Leave_Lobby()
     {
-        SceneManager.LoadScene("Matching_Menu");
         PhotonNetwork.LeaveLobby();
     }
 
@@ -39,6 +38,10 @@ public class Scene_Change : MonoBehaviourPunCallbacks
     }
     public override void OnLeftRoom()
     {
-        SceneManager.LoadScene("Multi_Room");
+        SceneManager.LoadScene("Matching_Menu");
+    }
+    public override void OnLeftLobby()
+    {
+        SceneManager.LoadScene("Matching_Menu");
     }
 }

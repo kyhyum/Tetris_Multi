@@ -969,7 +969,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 567495594}
         m_TargetAssemblyTypeName: Scene_Change, Assembly-CSharp
-        m_MethodName: Matching_Scene_Leave_Lobby
+        m_MethodName: Matching_Scene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

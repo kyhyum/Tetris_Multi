@@ -15,6 +15,7 @@ public class SeverManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        PhotonNetwork.Disconnect();
         Debug.Log("nickanme : "+PhotonNetwork.NickName);
         userId = PhotonNetwork.NickName;
 
@@ -22,7 +23,7 @@ public class SeverManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.GameVersion = version;
 
-        Debug.Log(PhotonNetwork.SendRate);
+       
 
         PhotonNetwork.ConnectUsingSettings();
         for(int i = 0; i<Buttons.Length; i++)
